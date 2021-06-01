@@ -1,4 +1,7 @@
-![alt text](https://github.com/nikosT/Gisola/blob/main/gisola.png?raw=true)
+<a href="https://github.com/nikosT/Gisola">
+<img src="https://github.com/nikosT/Gisola/blob/main/gisola.png" width="40%"/>
+</a>
+<br/><br/>
 
 Source code and material will be available soon.
 
