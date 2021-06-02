@@ -1,0 +1,37 @@
+      SUBROUTINE SUBEVNT15(AOPT, W, IOPTSHF, SX, ISOUR)
+
+      USE COMMON_VARS
+      USE PARAMETERS
+
+      IMPLICIT NONE
+      REAL AOPT, SX, W
+      INTEGER ICOM, IOPTSHF, IR, ISOUR, ITIM, N
+ 
+      DIMENSION AOPT(6)
+      DIMENSION SX(NUM_OF_TIME_SAMPLES, MAX_STATIONS, 3)
+      DIMENSION W(MIN_TIME_SHIFT:MAX_TIME_SHIFT, MAX_STATIONS, 3, 6, MAX_SOURCE_POSITIONS)
+
+!
+!     COMPUTING OPTIMUM SYNT SEISMO  (incl. IOPTSHFT in w)
+!
+ 
+      DO ITIM = 1, NTIM
+         DO IR = 1, NR
+            DO ICOM = 1, 3
+               SX(ITIM, IR, ICOM) = 0.
+            ENDDO
+         ENDDO
+      ENDDO
+ 
+      DO ITIM = 1, NTIM
+         DO IR = 1, NR
+            DO ICOM = 1, 3
+               DO N = 1, NMOM
+                  SX(ITIM, IR, ICOM) = SX(ITIM, IR, ICOM) + AOPT(N)*W(ITIM - IOPTSHF, IR, ICOM, N, ISOUR)
+               ENDDO
+            ENDDO
+         ENDDO
+      ENDDO
+ 
+ 
+      END SUBROUTINE SUBEVNT15
