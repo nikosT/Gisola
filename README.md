@@ -8,5 +8,5 @@ Visit the <a href="https://github.com/nikosT/Gisola/wiki">Wiki</a> for more info
 * Installation
 * Configuration
 * Usage
-* Plugins and Modules
+* Plugins/Modules and Tools
 * Contribution
