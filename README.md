@@ -10,5 +10,3 @@ Visit the <a href="https://github.com/nikosT/Gisola/wiki">Wiki</a> for more info
 * Usage
 * Plugins and Modules
 * Contribution
-
-<!-- Gisola: Real-Time Moment Tensor computation optimized for multicore and manycore architectures -->
