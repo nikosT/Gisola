@@ -10,3 +10,6 @@ Visit the <a href="https://github.com/nikosT/Gisola/wiki">Wiki</a> for more info
 * Usage
 * Plugins/Modules and Tools
 * Contribution
+
+Gisola presentation received the Virtual Outstanding Student and PhD candidate Presentation (vOSPP) Award 2021! #egu2021
+https://www.egu.eu/awards-medals/ospp-award/2021/
