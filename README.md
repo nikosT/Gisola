@@ -15,3 +15,4 @@ Gisola presentation received the Virtual Outstanding Student and PhD candidate P
 https://www.egu.eu/awards-medals/ospp-award/2021/
 
 Gisola presented in EGU General Assembly 2021 and FOSSCOMM 2021
+Watch presentation here: https://www.youtube.com/watch?v=wqoSDMYNqMY (in Greek)
