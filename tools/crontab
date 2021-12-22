@@ -1,0 +1,11 @@
+# every 1 min
+SHELL=/bin/bash
+
+* * * * * source /home/user/.bash_profile; cd /home/user/gisola/src; python3 ./gisola.py --real-time; sleep 15; python3 ./gisola.py --real-time; sleep 15; python3 ./gisola.py --real-time; sleep 15; python3 ./gisola.py --real-time; 
+
+# run once per day PPSD
+@daily source /home/user/.bash_profile; cd /home/user/gisola/tools/ppsd_app; python3 ./ppsd_app.py -c ../../src/config.yaml
+
+# re-create once per year the new year list item
+@yearly /home/user/gisola/tools/years.sh > /home/user/gisola/tools/years_log
+

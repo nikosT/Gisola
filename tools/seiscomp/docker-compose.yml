@@ -1,0 +1,33 @@
+version: "3.1"
+services:
+  seiscomp:
+    container_name: gisola-fdsnws
+    restart: always
+    build: .
+    user: sysop
+    ports:
+      - "8085:8080"
+      - "11:22"
+      - "6080:6080"
+      - "6901:5901"
+    volumes:
+      - ~/gisola_results:/home/sysop/results
+    depends_on:
+      - db
+    command: bash -c "./wait-for-it.sh db:3306 -- sudo /usr/sbin/sshd; echo -e 'example\nexample\n' | passwd; vncserver -geometry 1440x900; /home/sysop/seiscomp/bin/seiscomp start; /home/sysop/seiscomp/bin/seiscomp start fdsnws; /usr/share/novnc/utils/launch.sh --vnc 0.0.0.0:5901 --listen 6080;"
+
+  db:
+    container_name: gisola-db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+
+
+

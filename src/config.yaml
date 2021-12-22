@@ -1,0 +1,428 @@
+#    Copyright (C) 2021 Triantafyllis Nikolaos
+
+#    This file is part of Gisola.
+
+#    Gisola is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, 
+#    or any later version.
+
+#    Gisola is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with Gisola.  If not, see <https://www.gnu.org/licenses/>.
+
+Version: 1.0
+
+# Set the workspace where all MT calculations will be performed and archived.
+# The directory includes the web suite's pages.
+WorkDir: results/realtime
+
+# The Inventory refers to the stations' characteristics such
+# as the poloes-zeros, digitizer's gain etc.
+Inventory:
+  # Supported types of retrieval services can be the FDSNWS-station
+  # and/or file in stationXML format. You can use as many services as
+  # you want and the stations' metadata will be merged by looking 
+  # in FIFO order. At the below example first, it will try to retrieve
+  # the metadata from the first entry, then it will merge the results
+  # from the second service etc.
+  # Format is: [FDSNWS, url, token] and/or [StationXML, file.xml] 
+  # When FDSNWS-station is used, you have to set null to the 3rd variable
+  # since no restricted metadata exist and no token is needed. Also, the
+  # most updated inventory will be retrieved from the FDSNWS hosts, 
+  # relevant to the seismic events. The more services you provided, 
+  # the more time will be consumed for retrieval. If stationXML file is
+  # used, you are responsible to provide updated meta-data relevant to the
+  # seismic events or real-time scenario (e.g. daily inventory update cron-job).
+  Service:
+    - [FDSNWS, http://eida.gein.noa.gr, null] # get metadata from NOA
+    - [FDSNWS, http://www.orfeus-eu.org, null] # get metadata from ODC
+    - [StationXML, inventory.xml] # get metadata from file
+
+  # The WhiteList parameters indicate the quality evaluation of the stations.
+  # 0 - Zero value indicate station blacklisting
+  # int - A higher integer value denotes a good quality station,
+  # while a lower value a bad quality station.
+  WhiteList:
+    # Set path to station evaluation file
+    # The file consists of lines with the format: NET STA QUALITY
+    # For example: HL ATH 5 denotes, station ATH of network HL to be 
+    # quality of 5. If more than one lines found for a certain station
+    # the first one will be used.
+    # You can use the * (asterisk) wildcard if you want to apply the 
+    # evaluation for the entire network. At the below example 
+    # all stations from NET2 are disabled from process, while 
+    # all stations, apart from STA -which is set to 5-, of network NET 
+    # are set to 1
+    # Example of ./stations file:
+    # NET STA 5
+    # NET2 * 0
+    # NET * 1
+    # You can set filepath to null not to take into account 
+    # the stations' evaluation file
+    # If stations are not defined in the evaluation file or
+    # evaluation file is set to null, then these stations
+    # will be mapped with the default Priority value
+    # e.g. in our case, 2
+    # Inventory rules has the form of: minMag, maxMag, minPriority
+    # The Rules note which Priority class (and above) stations 
+    # to be used, based on the initial event's magnitude.
+    # For example, if 4.0<= Mag <=4.5, Gisola will use all stations 
+    # with Priority value >=3. According to our configuration, since
+    # default value=2, which excludes all stations that are not defined 
+    # in the evaluation file and from the evaluation file it includes 
+    # only those with Priority value >=3.
+    Filepath: null # ./stations
+    Priority: 2   # default value
+    Rules:
+      - [4.0, 4.5, 3]
+      - [4.6, 5.0, 3]
+      - [5.1, 5.8, 4]
+      - [5.9, 9.0, 5]
+
+  # Accepted types of components
+  # Only these type of orientations will be
+  # considered (recommended not be altered)
+  Components: ['Z23', 'Z12', '123', 'ZNE']
+
+  # Retrieve channel types based on distance rules
+  # Distance rules has the form of: minMag, maxMag, 
+  # minDist (km), maxDist (km), channels
+  # Multiple rules can be used simultaneously.
+  # For example, if 5.1<= Mag <=5.5, Gisola will 
+  # retrieve stations within a range of: 40 km <= loc<= 300 km 
+  # where loc is the initial location (hypocenter) of the event
+  # and only for channel type of BH, HH (Broadband stations)
+  # AND
+  # retrieve stations within a range of: 20 km <= loc<= 100 km 
+  # where loc is the initial location (hypocenter) of the event
+  # and only for channel type of HN, EN (Strong-Motion stations)
+  # If for some reason (e.g. seismic network orientation), 
+  # you need to define a different set of Distance rules according
+  # to regional restrictions, another configuration file is needed
+  Distance:
+    - [4.0, 5.0, [10, 250, ['BH','HH']]]
+    - [5.1, 5.5, [40, 300, ['BH','HH']]]
+    - [5.1, 5.5, [20, 100, ['HN','EN']]]  
+    - [5.6, 6.0, [50, 450, ['BH','HH']]]
+    - [5.6, 6.0, [50, 150, ['HN','EN']]]  
+    - [6.1, 9.0, [100, 700, ['BH','HH']]] 
+
+  # Azimuth has the form of: [minSectors, maxStations per sector]
+  # 8 sectors of 45 deg each are defined around the initial location
+  # (hypocenter) of the event. The first number indicates the number 
+  # of sectors, where at least one station is found, to be considered.
+  # For example, a value of 1 indicates that proceed with the MT 
+  # calculation even there is only 1 sector coverage (weak station 
+  # azimuthal distribution) and easily reached. A value of 8 is the 
+  # maximum value, where it requests at least x stations per sector 
+  # for all sectors (strong azimuthal distribution) and might not be 
+  # easily reached (based on networks' regional limitation)
+  # We set a value of 3 at least sectors as a feasible case scenario.
+  # x stations: The next value indicates the number of stations that 
+  # is within the sector, in order to flag the sector as valid. 
+  # A null valid can be used, in order to use all possible stations 
+  # found. At the above example, Gisola will continue the MT 
+  # computations only if at least 3 sectors, with a maximum of 2 
+  # stations, are found, otherwise it will indicate an azimuthal error
+  # and it will stop the process. If more stations are found, than the 
+  # limitation, the Gisola will sort according to (i) priority value, 
+  # ii) type: first Broadband, then Strong-Motion, iii) the number of 
+  # passed traces (NEZ), iv) lowest distance from the epicenter 
+  # and retrieve only those that reach the limit. In our case,
+  # a minimum of 3*2=6 stations will be necessary, in order to continue 
+  # with the MT procedure. While the maximum could be 8*2=16 stations.
+  # This must also comply with the parameters defined in the 
+  # parameters.f90 file within the inversion code.
+  Azimuth: [3,2] # sectors, stations per sector
+
+# The Stream refers to the seismic waveforms
+Stream:
+  # Supported types of retrieval services can be the FDSNWS-dataselect, 
+  # SeedLink, and/or SDS archive path. You can use as many services as
+  # you want and the seismic waveforms will be merged by looking 
+  # in FIFO order. At the below example first, it will try to retrieve
+  # the seismic waveforms from the first entry, then it will merge the 
+  # results from the second service etc.
+  # Format is: [FDSNWS, url, token], [SeedLink, URL], and/or [SDS, path]
+  # For realtime operation is recommended a SeedLink service. However, 
+  # it takes more time than the other services. The more service you add 
+  # the more time is required before it process to the next phase.
+  # If you need to use restricted data from the FDSNWS-dataselect, you
+  # should provide the token value, otherwise, use null.
+  Service:
+    - [FDSNWS, http://eida.gein.noa.gr, null]
+    - [FDSNWS, http://www.orfeus-eu.org, null]
+
+  # The modules help to choose good quality waveforms. 
+  # The possible values are: clip, mouse, snr, ppsd, ppsdoffline
+  # * clip: real-time check for clipped waveforms (based on module's threshold)
+  # * mouse: real-time check for disturbances so-called mouses
+  # * snr: real-time check for clipped waveforms (based on module's threshold)
+  # * ppsd: real-time check by comparing Power Spectral Densities (based 
+  # on module's threshold). This module requires 1-hour of data before
+  # event. Thus, more time will be needed to finalize the MT computation
+  # * ppsdoffline: The same mechanism reads a directory with PPSD values
+  # per station. Thus, a cronjob needs to run (e.g. daily) to update them.
+  # Currently, it can be used for realtime operation (keeps no history).
+  # Use an empty list [] if no modules need to be set.
+  # Recommended for real-time operation:
+  # Modules: ['clip', 'ppsdoffline', 'mouse']
+  # Recommended for past-time operation:
+  # Modules: ['clip', 'ppsd', 'mouse']
+  Modules: ['clip', 'ppsd', 'mouse']
+
+# Greens' Functions (GFs) computation
+# GFs are computed in real-time according to
+# event's location, previous rules, and MT search grid dimensions.
+Green:
+  # The operator can set different grids based on the size
+  # of event. Multiple grids could be triggered simultaneously.
+  # The best-correlated solution will be chosen, however, more time
+  # will be needed for finalizing the MT computation. You can
+  # have an adjustable grid by adding as many as you like
+  # inner distance and depth rules. Every rule has the
+  # form of minValue, maxValue, and stepValue in km.
+  # In the distance rules, the starting point is relevant to
+  # the init estimated location of the hypocenter, and a square will
+  # be generated where the location will be at the center of it.
+  # The above mechanism will be performed for each possible depth 
+  # (see below), leading to a cube of MT computations.
+  # For each point of the cube, time-shifted searches will be 
+  # calculated, leading finally to a 4D grid MT search and the 
+  # best-correlated solution will be chosen.
+  # In the depth rules the starting point is relevant to
+  # the init estimated depth of the hypocenter. And the 
+  # search continues in two directions; above and below it
+  # (auto limits to 1 km from the surface).
+  # For example, according to this configuration,
+  # if Mag==6.0, Gisola will trigger only the second rule,
+  # thus 1 grid will be generated. The grid points where 
+  # the MT calculations will be performed, will start 
+  # from 0 to 9 km with a step of 4 km starting from hypocenter location,
+  # meaning: 0, 4, 8 km from h. loc. in four directions (east, west,
+  # north, south), thus -8, -4, 0, 4, 8 (horizontally and vertically)
+  # 5x5=25 grid points (by the first distance rule)
+  # AND
+  # from 15 to 21 km with a step of 5 km starting from hypocenter location,
+  # meaning: 15, 20 km from h. loc. in four directions (east, west,
+  # north, south), thus -20, -15, 15, 20 (horizontally and vertically)
+  # and 4x4=16 grid points (by the second distance rule)
+  # leading to a total of 25+16=41 grid points per depth layer
+  # The depth layers will be generated by only one rule. That is:
+  # 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 in two 
+  # direction below and above init hypocenter's depth with an automatic 
+  # limit of 1 km from the surface. Assuming that we have an event with 50 km 
+  # init hyp. depth, will calculate MTs from 50-30=20 km to 50+30=80 km from
+  # the surface. Since, we don't reach the limitation of 1 km from surface, it
+  # will lead to 15+1+15=31 depth layers leading to the final MT search grid 
+  # with a total of 31*41=1271 grid points. The time shifts are configured at
+  # a following parameter.
+  Grid:
+    - Rule: [4.0, 5.5] # magnitude condition
+      Distance:     # maxValue is NOT reached (+stepValue if you want to reach it)
+        - [0,9,2]   # minValue, maxValue, stepValue in km
+      Depth: # relevant to init depth
+        - [0,31,2]
+
+    - Rule: [5.6, 6.5]
+      Distance:
+        - [0,9,4]
+        - [15,21,5]
+      Depth:
+        - [0,31,2]
+
+    - Rule: [6.6, 9.0]
+      Distance:
+        - [0,31,5]
+      Depth:
+        - [0,31,2]
+
+  # The crustal models used for the production of GFs are defined here.
+  # For the Filepath is better to use a relative path. See crustal models 
+  # defined crustals folders, in order to figure out the format that is 
+  # needed (e.g. the first 2 lines are comments, etc.).
+  # The Geobox is Polygon that defines the region where which crustal model
+  # is going to be used if the initial hypocenter's location is within in.
+  # Multiple crustal models can be defined simultaneously, thus multiple GFs 
+  # will be generated. The best-correlated solution will be chosen, however, 
+  # more time will be needed for finalizing the MT computation. 
+  # If Geobox is set to null, then this crustal model will be triggered if 
+  # no other model found (used as default crustal model). 
+  # Only one crustal model with null Geobox can be defined.
+  Crustal:
+    - Filepath: crustals/drakatos.vz
+      Geobox: (22.6163,37.6465), (23.3432,36.8208), (24.6418,36.6669), (25.6634,37.5202), (24.9950,38.6259), (23.6373,39.4235), (22.3654,39.2644), (21.8251,39.1394), (22.6163,37.6465)
+
+    - Filepath: crustals/hasslinger.vz
+      Geobox: (19.2844,39.7272), (19.3869,39.6062), (20.6181,36.2835), (21.0868,36.3442), (21.6460,36.3353), (22.4078,36.3616), (22.4193,36.8072), (22.3387,37.8602), (22.1245,38.5904), (21.5799,39.8288), (20.8563,41.2116), (19.2330,40.5713), (19.2844,39.7272)
+
+    - Filepath: crustals/karagianniN.vz
+      Geobox: (27.8207,37.7397), (27.7968,37.8825), (27.6912,39.8097), (26.7934,40.8404), (25.5053,41.0043), (23.8058,40.9247), (22.2572,40.3739), (22.7997,39.5096), (23.6678,38.8283), (24.5977,38.1499), (25.4623,37.5535), (27.8207,37.7397)
+
+    - Filepath: crustals/karagianniS.vz
+      Geobox: (23.0601,34.3852), (23.6039,34.0317), (26.8522,33.6953), (29.1178,34.7188), (29.9628,36.1148), (27.4820,37.5490), (26.4968,37.6732), (21.4060,37.0584), (23.0601,34.3852)
+      
+    - Filepath: crustals/novotny.vz
+      Geobox: null # null indicates default: if none of the above crustal models match, use this
+
+  # Path to GFs generation executable. Unless you know what 
+  # you are doing, you won't need to change it.
+  ExePath: core/green/gr_xyz
+
+  # Maximum number of stations that can be used in computations
+  # It must comply with the parameters defined in the inversion code
+  # in parameters.f90. Based on azimuthal restriction, no more than 
+  # 24 stations will be chosen. The less number it is used, the 
+  # fastest the inversion code will be (when you re-compile it).
+  MaxStations: 24 # must be the same as the one in parameters.f90
+  # If there are many grid points that could lead to a memory issue,
+  # if the program tries to calculate them all at once, the software 
+  # can break computations internally in chunks. For CPU, you can 
+  # leave it as it is. For GPU, you should probably increase for 
+  # better performance. 
+  # It must comply with the parameters defined in the inversion code
+  # in parameters.f90.
+  MaxSources: 100 # must be the same as the one in parameters.f90
+
+# Parameters for the inversion procedure
+Inversion:
+  # Here is defined the time window where the inversion is going
+  # to be performed. Multiple rules can be defined simultaneously. 
+  # The best-correlated solution will be chosen, however, 
+  # more time will be needed for finalizing the MT computation. 
+  # For example, if 4.0<= Mag <=4.5, Gisola will use 245.76 sec as
+  # inversion time window. Values, that can be used must be able
+  # to be divided with 8192 and lead to not repeating decimals.
+  Window:
+    - [4.0, 4.5, 245.76]
+    - [4.6, 5.5, 327.68]
+    - [5.6, 9.0, 409.6]
+
+  # Here is defined the time search dimension in the MT search grid.
+  # Multiple rules can be defined simultaneously. The best-correlated 
+  # solution will be chosen, however, more time will be needed for 
+  # finalizing the MT computation. It must comply with the parameters 
+  # defined in the inversion code in parameters.f90.
+  # The values here are chucks in time kvantum and in form
+  # minValue, stepValue, maxValue (min/max limits consider the values also), 
+  # relative to initial origin's time. 
+  # To determine the exact time in sec you have to associate it with the 
+  # corresponding values from Window parameter. For example, 
+  # if 4.0<= Mag <=4.5, Gisola will use 245.76 sec as inversion time window, 
+  # leading to a time kvantum of 246.76/8192=0.03 sec. Thus, -67*0.03=-2.01 sec
+  # to 5.01 sec with a step of 0.3 sec. A total of 24 time points for each 3D grid point.
+  # In our case would lead to 24*1271 grid points= 30504 MT inversions.
+  # Time Shifts must also comply with the parameters defined in the 
+  # parameters.f90 file within the inversion code.
+  TimeShift:
+    - [4.0, 4.5, [-67, 10, 167]] # must be the same as the one in parameters.f90
+    - [4.6, 5.5, [-51, 10, 161]]
+    - [5.6, 9.0, [-81, 15, 341]]
+
+  # Here is defined the frequency band that will be used for the inversion.
+  # In form of F1 F2 F3 F4, where F1-F2 and F3-F4 are tapered.
+  # Multiple rules can be defined simultaneously. The best-correlated 
+  # solution will be chosen, however, more time will be needed for 
+  # finalizing the MT computation.
+  Frequency:
+    - [4.0, 5.5, [0.04, 0.05, 0.08, 0.09]]
+    - [5.6, 5.9, [0.02, 0.03, 0.06, 0.07]]
+    - [6.0, 7.0, [0.01, 0.02, 0.05, 0.06]] 
+    - [6.0, 7.0, [0.007, 0.008, 0.02, 0.03]]
+    - [7.1, 9.0, [0.007, 0.008, 0.02, 0.03]]
+
+  # Path to inversion executable. Unless you know what 
+  # you are doing, you won't need to change it.
+  ExePath: core/inversion/isola
+
+# This service is used to provide Gisola with a catalog of 
+# seismic events, either for real-time or past-time operation.  
+# FDSNWS-event service can only be used here.
+Event:
+  Host: http://eida.gein.noa.gr
+
+# Gisola can notify recipients when MT computations are finished, 
+# with respective link to solution and to map home page (of Gisola web suite)
+# Currently it only supports the usage of SMTP service. Set Smtp to null
+# if you want to bypass this feature.
+# If you want to expose your result folder in the internet
+# then the WorkDir path should be set at the end of the hostname
+Notification:
+  Email:
+    Smtp: null # use null if not in use
+    User: user
+    Pass: pass
+    Sender: sender
+    Recipients: null
+    HostSite: https://localhost/results
+
+  Command: null # filepath, otherwise use null: 
+                # invoke bash command when processing is finished.
+                # Use keyword $bestinvdir in your script. Gisola will 
+                # reserve this keyword to indicate the full path 
+                # of the best inversion directory. 
+                # A very useful feature if you want to trigger 
+                # processes when a MT computation is finished. 
+                # For example, you can register the solution back to 
+                # your SeisComP program or use the FDSNWS-event service 
+                # from a dockerized version of SeisComP that ships 
+                # within Gisola-tools. In this case, you should use 
+                # event_sc.xml which is the solution in SC3ML format, 
+                # otherwise use event.xml which is in QuakeML format.
+
+# The Watcher Service monitors FDSNWS-event
+# for events and triggers the auto MT procedure
+# Range defines the time window of events search and retrieval
+# Time window starts from Range to NOW -Playback -tl sec
+# tl, is the time window of inversion for the specific event
+# You can set Playback if you want to re-produce past time.
+# Set Playback to 0, for real-time procedure. 
+# Set Historical to false if you want to retrieve the best 
+# hypocenter origin estimation, otherwise, it will re-produce 
+# the origins as it would happen in real-time scenario. Only 
+# useful for playback, and only if you want to reproduce the
+# exact same behavior, otherwise set to false and retrieve the 
+# best hypocenter origin. The Geobox restricts MTs calculations 
+# to events that are within it. You can use different configuration
+# files with different Geobox value to indicate regional-specific 
+# configuration. Use null to bypass the restriction.
+Watcher:
+  Magnitudetype: MLh # set specific hypocenter magnitude type or null for all
+  Range: 540 # check interval in sec
+  Playback: 0 # set sec for past-time run
+  Historical: false # use this only if Playback is not zero and you want to reproduce the exact scenario
+  Geobox: (20.3054,37.2037), (22.4079,33.6323), (27.0569,33.8793), (30.3113,35.8225), (27.4245,41.5998), (24.9779,42.0729), (21.7796,41.8349), (18.6751,40.6285), (20.3054,37.2037) # null indicates not bounds
+  # Quality is useful only for real-time or past-time (with Historical 
+  # set to true) scenarios. It indicates the limits of the uncertainty 
+  # of Time, Depth, Latitude, Longitude, and Magnitude in order to 
+  # trigger the MT computation. This is useful, if you want to wait for 
+  # a better input of hypocenter. If Timeout passes and not better quality 
+  # uncertainties occurred, trigger the MT calculation anyway. This must 
+  # also comply with Range value (not more than it, <=Range).
+  Quality: # uncertainty
+    Time: 1
+    Depth: 10 # km
+    Latitude: 15
+    Longitude: 15
+    Magnitude: 0.3
+    Timeout: 540 # must get associated with the Range value (<=Range)
+
+# Apply your citation for the results generation
+# The map home page shows MT solutions that are above the Quality threshold.
+# If you use D4, all solutions will be shown, otherwise until threshold (included).
+# You can always view all solutions by applying the ?show=1 to the end of 
+# the URL of the map.html
+Citation:
+  Agency: National Observatory of Athens - Institute of Geodynamics
+  Website: http://bbnet.gein.noa.gr
+  Logo: web/logo.png
+  # choose the threshold to view starting from A1 to D4
+  # add "?show=1" at the end of the Gisola Map URL to view all results (without the Quality Threshold)
+  Quality: B4 
+  Author: Gisola
+  Version: 1.0

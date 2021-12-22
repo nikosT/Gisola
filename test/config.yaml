@@ -1,0 +1,118 @@
+
+Version: 1.0
+
+# Directory where the process is being performed
+WorkDir: ../test/results
+
+# The Inventory Service supports FDSNWS-station only and file in XML format (as mentioned in ObsPy documentation)
+Inventory:
+  # Reads inventory from the file. You are responsible to provide updated 
+  # XML file for real-time processing (e.g. daily inventory update cron-job).
+  # If set to null or file is not found, most updated inventory will be 
+  # retrieved from the FDSNWS hosts. However, more time will be consumed 
+  # for retrieval
+  Service:
+    - [StationXML, ../test/benchmark/inventory.xml] # tokens are not used in inventory retrieval
+
+  WhiteList:
+    Filepath: null
+    Priority: 2  # default 2
+    Rules:
+      - [5.9, 9.0, 5]
+
+  # Accepted types of components
+  Components: ['Z23', 'Z12', '123', 'ZNE']
+
+  # Retrieve channel types based on distance rules
+  # Distance rules has the form of: minMag, maxMag, minDist, maxDist, channels
+  Distance:
+    - [6.1, 9.0, [100, 700, ['BH','HH']]] 
+
+  Azimuth: [3,2] # sectors, stations per sector # null for all!
+
+# The Stream Service supports FDSNWS-station only and file in XML format (as mentioned in ObsPy documentation)
+Stream:
+  # If you add more that one FDSNWS Hosts, results will be merged according to ObsPy's policy
+  # Service can have a value of: FDSNWS, SDS
+  # FDSNWS accepts multiple hosts but SDS only one
+  Service:
+    - [SDS, ../test/benchmark/archive]
+
+  # filter data by these modules
+  Modules: ['clip', 'mouse']
+
+# Greens' Functions computation
+Green:
+
+  Grid:
+    - Rule: [6.6, 9.0]
+      Distance:
+        - [0,31,5]
+      Depth:
+        - [0,31,2]
+
+  Crustal:      
+    - Filepath: crustals/novotny.vz
+      Geobox: null # null indicates default: if none of the above crustal models match use this
+
+  ExePath: core/green/gr_xyz
+
+  MaxStations: 16 # must be the same with the one in parameters.f90
+  MaxSources: 100 # must be the same with the one in parameters.f90
+
+
+Inversion:
+
+  TimeShift:
+    - [5.6, 9.0, [-81, 15, 341]]
+
+  Window:
+    - [5.6, 9.0, 409.6]
+
+  Frequency:
+    - [6.1, 9.0, [0.007, 0.008, 0.02, 0.03]]
+
+  ExePath: core/inversion/isola
+
+# This service provides gisola with event info
+Event:
+  Host: null
+
+Notification:
+  Email:
+    Smtp: null # vmail2.noa.gr:587 # use null if not in use
+    User: user
+    Pass: pass
+    Sender: sender
+    Recipients: recipients
+    HostSite: http://localhost/gisola
+
+  Command: null # invoke bash command when processing is finished.
+                # Use keyword $bestinvdir in your script. Gisola will 
+                # reserve this keyword to indicate the full path 
+                # of the best inversion directory 
+
+# The Watcher Service monitors FDSNWS-event
+# for new events and triggers the auto MT procedure
+Watcher:
+  Magnitudetype: MLh # or null if not specifications is wanted
+  Range: 240 # check interval in sec
+  Playback: 0 # set sec for historic run
+  Historical: false # set playback option
+  Geobox: null # indicates not bounds
+  Quality: # uncertainty
+    Time: 1
+    Depth: 10 # km
+    Latitude: 15
+    Longitude: 15
+    Magnitude: 0.3
+    Timeout: 540 # must get associated with the Time Range
+
+# Apply your citation for the results generation
+Citation:
+  Agency: Demo - MyDemo
+  Website: http://localhost
+  Logo: web/gisola.png
+  Author: Gisola
+  Version: 1.0
+

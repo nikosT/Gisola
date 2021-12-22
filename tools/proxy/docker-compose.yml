@@ -1,0 +1,11 @@
+version: "3.1"
+services:
+  proxy:
+    container_name: gisola-proxy
+    restart: always
+    image: saravak/httpd-proxyenabled
+    ports:
+      - "8085:80"
+    volumes:
+      - ./config:/usr/local/apache2/conf/sites
+
