@@ -11,6 +11,9 @@ Visit the <a href="https://github.com/nikosT/Gisola/wiki">Wiki</a> for more info
 * Plugins/Modules and Tools
 * Contribution
 
+Citation
+Nikolaos Triantafyllis, Ioannis E. Venetis, Ioannis Fountoulakis, Erion‐Vasilis Pikoulis, Efthimios Sokos, Christos P. Evangelidis; Gisola: A High‐Performance Computing Application for Real‐Time Moment Tensor Inversion. Seismological Research Letters 2021; doi: https://doi.org/10.1785/0220210153
+
 Gisola presentation received the Virtual Outstanding Student and PhD candidate Presentation (vOSPP) Award 2021! #egu2021
 https://www.egu.eu/awards-medals/ospp-award/2021/
 
