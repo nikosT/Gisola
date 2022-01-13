@@ -80,7 +80,7 @@ def emsc(filepath='emsc.txt'):
            '======================================\n' \
            '======= Moment Tensor Solution =======\n' \
            '======================================\n\n' \
-           'Hypocenter Solution (NOA)\n' \
+           'Hypocenter Solution (EQM)\n' \
            'Origin Time :  {}\n' \
            'Lat:  {:.4f}     Lon:  {:.4f}\n' \
            'Depth (km) : {:d}\n' \
@@ -151,14 +151,14 @@ def text(filepath='mt.txt'):
     # Hypocenter info
     _text=('{}\n{} Automatic {}\n{} Moment Tensor Solution {}\n\n{}\n' \
           '{:^68}\n{}\nOrigin Time:\t{}\t\t\tMagnitude:\t{:.1f} {}\n\n' \
-          'Latitude: {:.4f} N\t\tLongitude: {:.4f} E\t\t' \
+          'Latitude: {:.4f} \t\tLongitude: {:.4f} \t\t' \
           'Depth: {:.1f} km\n\n').format('-'*68,'-'*29,'-'*28,'-'*22,'-'*22,\
           '-'*68, 'Hypocenter','-'*68, org.time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-4],\
           mag.mag,mag.magnitude_type,org.latitude,org.longitude,round(org.depth/1000,0))
 
     # Centroid info
     _text+=('{}\n{:^68}\n{}\nCentroid Time:\t {}\t\t\tMagnitude:\t{:.1f} {}\n\n' \
-          'Latitude: {:.4f} N\t\tLongitude: {:.4f} E\t\tDepth: {:.1f} km\n\n' \
+          'Latitude: {:.4f} S\t\tLongitude: {:.4f} E\t\tDepth: {:.1f} km\n\n' \
           'Moment: {:.3e} Nm\n\n').format('-'*68, 'Centroid','-'*68, \
           org2.time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-4],\
           mag2.mag,mag2.magnitude_type,org2.latitude, org2.longitude,\
