@@ -149,5 +149,7 @@ def ang_from_R1R2(R1, R2):
         float: angle between eigenvectors 
     """
 
-    return np.arccos((np.trace(np.dot(R1, R2.transpose())) - 1.) / 2.)
+#    return np.arccos((np.trace(np.dot(R1, R2.transpose())) - 1.) / 2.)
+    return np.arccos(np.clip((np.trace(np.dot(R1, R2.transpose())) - 1.) / 2.,-1,1))
+
 
