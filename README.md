@@ -19,3 +19,18 @@ https://www.egu.eu/awards-medals/ospp-award/2021/
 
 Gisola presented in EGU General Assembly 2021 and FOSSCOMM 2021<br>
 Watch presentation here: https://www.youtube.com/watch?v=wqoSDMYNqMY (in Greek)
+
+
+Use Cases
+
+* National Observatory of Athens, Institute of Geodynamics -https://bbnet.gein.noa.gr/gisola/realtime
+<a href="https://bbnet.gein.noa.gr/gisola/realtime">
+<img src="https://github.com/nikosT/Gisola/blob/main/material/screenshot.png" width="60%"/>
+</a>
+<br/><br/>
+
+* FMIPA Unesa - Universitas Negeri Surabaya - http://aptsunami.fmipa.unesa.ac.id
+<a href="http://aptsunami.fmipa.unesa.ac.id">
+<img src="https://github.com/nikosT/Gisola/blob/main/material/fmipa.png" width="60%"/>
+</a>
+<br/><br/>
