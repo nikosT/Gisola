@@ -387,10 +387,9 @@ def atlas(filepath='map.png'):
     fig.tight_layout()
     fig.savefig(filepath)
 
-def streams(st=None, filepath='misfit.png'):
+def streams(st=None, filepath='streams.png'):
     """
-    Plotting the misfits of observed and synthetic timeseries
-    of each enabled stream for each station
+    Plotting streams
     """
     filepath=os.path.join(config.outputdir, ('streams.png' if not config.revise else 'streams.revise.png'))
 
