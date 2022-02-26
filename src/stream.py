@@ -184,12 +184,6 @@ def clean():
     endtime=config.org.time+math.ceil(max([tl for tl in config.windowRules]))+1
     config.st.trim(config.org.time, endtime)
 
-    # save corrected waveforms
-    config.logger.info(('Saving corrected waveforms in one mseed file in ' + \
-    '{}').format(os.path.join(config.workdir,'streams_corrected.mseed')))
-    config.st.write(os.path.join(config.workdir,'streams_corrected.mseed'), \
-    format='MSEED')
-
 # function runs for individual station/channel triplet in parallel
 def warning(func):
     def inner():
@@ -345,4 +339,10 @@ def prioritize():
     for sta in stations[config.cfg['Green']['MaxStations']:]:
         for tr in config.st.select(station=sta[0]):
             config.st.remove(tr)
+    
+    # save corrected waveforms
+    config.logger.info(('Saving corrected waveforms in one mseed file in ' + \
+    '{}').format(os.path.join(config.workdir,'streams_corrected.mseed')))
+    config.st.write(os.path.join(config.workdir,'streams_corrected.mseed'), \
+    format='MSEED')
 
