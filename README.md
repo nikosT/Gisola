@@ -23,7 +23,7 @@ Watch presentation here: https://www.youtube.com/watch?v=wqoSDMYNqMY (in Greek)
 
 Use Cases
 
-* National Observatory of Athens, Institute of Geodynamics - https://bbnet.gein.noa.gr/gisola/realtime
+* <img src="http://bbnet.gein.noa.gr/HL/" width="3%"/> National Observatory of Athens, Institute of Geodynamics - https://bbnet.gein.noa.gr/gisola/realtime
 <a href="https://bbnet.gein.noa.gr/gisola/realtime">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/screenshot.png" width="60%"/>
 </a>
