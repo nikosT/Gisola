@@ -23,19 +23,19 @@ Watch presentation here: https://www.youtube.com/watch?v=wqoSDMYNqMY (in Greek)
 
 Use Cases
 
-* <img src="http://bbnet.gein.noa.gr/HL/" width="3%"/> National Observatory of Athens, Institute of Geodynamics - https://bbnet.gein.noa.gr/gisola/realtime
+* <img src="http://eida.gein.noa.gr/logos/hl.png" width="3%"/> National Observatory of Athens, Institute of Geodynamics - https://bbnet.gein.noa.gr/gisola/realtime
 <a href="https://bbnet.gein.noa.gr/gisola/realtime">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/screenshot.png" width="60%"/>
 </a>
 <br/><br/>
 
-* FMIPA Unesa - Universitas Negeri Surabaya - http://aptsunami.fmipa.unesa.ac.id
+* <img src="http://aptsunami.fmipa.unesa.ac.id/2022/logo.png" width="3%"/> FMIPA Unesa - Universitas Negeri Surabaya - http://aptsunami.fmipa.unesa.ac.id
 <a href="http://aptsunami.fmipa.unesa.ac.id">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/fmipa.png" width="60%"/>
 </a>
 <br/><br/>
 
-* Colombian Geological Survey (Servicio Geológico Colombiano) - https://www.sgc.gov.co
+* <img src="https://www.sgc.gov.co/static/media/Logo_SGC.8391f3a4.svg" width="3%"/> Colombian Geological Survey (Servicio Geológico Colombiano) - https://www.sgc.gov.co
 <a href="https://www.sgc.gov.co/">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/sgc.png" width="60%"/>
 </a>
