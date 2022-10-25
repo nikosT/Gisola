@@ -272,7 +272,7 @@ def correct(stream):
         # flat signal
         st.detrend('linear')
         # remove_response
-        st.remove_response(inventory=inv, 
+        st.remove_response(inventory=None, 
                        output='VEL', # output units in Velocity (m/s)
                        pre_filt=(0.001, 0.002, 8, 9), # bandpass frqs (Hz)
                        zero_mean=True, # detrend(demean)
