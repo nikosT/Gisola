@@ -219,8 +219,7 @@ def correct(stream):
             st=st.trim(starttime=config.org.time-10)
 
         # rotate will always bring components to ZNE name
-        st.rotate(method="->ZNE", inventory=inv, \
-        components=tuple(config.cfg['Inventory']['Components']))
+        st.rotate(method="->ZNE", inventory=inv)
 
         if 'snr' in config.cfg['Stream']['Modules']:
             # filter traces by SNR
@@ -345,4 +344,5 @@ def prioritize():
     '{}').format(os.path.join(config.workdir,'streams_corrected.mseed')))
     config.st.write(os.path.join(config.workdir,'streams_corrected.mseed'), \
     format='MSEED')
+
 
