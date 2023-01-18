@@ -41,6 +41,12 @@ Use Cases
 </a>
 <br/><br/>
 
+* <img src="https://www.geo.edu.al//gisola/2023/logo.png" width="4%"/> Institute of Geosciences (IGEO) - https://www.geo.edu.al/
+<a href="https://www.geo.edu.al/MonitoringForecast/Moment_Tensor_Solutions/">
+<img src="https://github.com/nikosT/Gisola/blob/main/material/igeo.png" width="60%"/>
+</a>
+<br/><br/>
+
 * <img src="https://www.uprm.edu/portada/wp-content/uploads/sites/24/2018/06/logo-upr-rum-white-150x150.png" width="4%"/> Recinto Universitario de Mayagüez (Puerto Rico Strong Motion Program) [Experimental] - https://smp.uprm.edu
 <a href="https://smp.uprm.edu/mtmon/2022">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/uprm.png" width="60%"/>
