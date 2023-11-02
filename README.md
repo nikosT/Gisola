@@ -52,3 +52,10 @@ Use Cases
 <img src="https://github.com/nikosT/Gisola/blob/main/material/uprm.png" width="60%"/>
 </a>
 <br/><br/>
+
+**MT Stress Inversion Calcuator FDSNWS-event driven**
+see https://github.com/nikosT/Gisola/discussions/42
+
+Introducing a cutting-edge web app for stress inversion calculations using STRESSINVERSE, accessing Moment Tensors via FDSNWS-event in the integrated utility of Gisola, tailored for predefined geographic regions. This tool offers real-time updates and flexibility for researchers.
+
+![image](https://github.com/Kayieni/thesis_app/assets/44552188/3989ea5d-a1dc-42ba-8802-2bba94b31b1e)  ![image](https://github.com/Kayieni/thesis_app/assets/44552188/12cb545c-23f9-4b70-bb40-0f51b2266c09)
