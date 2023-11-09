@@ -102,7 +102,7 @@ def calculateVariance(observed, synthetic, tl):
     """
     with np.errstate(divide='raise'):
         try:
-            dt = round((tl/8192.0),2)
+            dt = round((tl/8192.0),4)
             obs = np.array(observed)
             syn = np.array(synthetic)
 
