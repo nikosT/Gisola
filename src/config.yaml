@@ -374,7 +374,7 @@ Notification:
                 # within Gisola-tools. In this case, you should use 
                 # event_sc.xml which is the solution in SC3ML format, 
                 # otherwise use event.xml which is in QuakeML format.
-                # For instance, $outputdir/output/sc3_event.xml
+                # For instance, $outputdir/output/event_sc.xml
 
 # The Watcher Service monitors FDSNWS-event
 # for events and triggers the auto MT procedure
