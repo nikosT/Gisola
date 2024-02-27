@@ -363,7 +363,7 @@ Notification:
 
   Command: null # filepath, otherwise use null: 
                 # invoke bash command when processing is finished.
-                # Use keyword $bestinvdir in your script. Gisola will 
+                # Use keyword $outputdir or $bestinvdir in your script. Gisola will 
                 # reserve this keyword to indicate the full path 
                 # of the best inversion directory. 
                 # A very useful feature if you want to trigger 
@@ -374,6 +374,7 @@ Notification:
                 # within Gisola-tools. In this case, you should use 
                 # event_sc.xml which is the solution in SC3ML format, 
                 # otherwise use event.xml which is in QuakeML format.
+                # For instance, $outputdir/output/sc3_event.xml
 
 # The Watcher Service monitors FDSNWS-event
 # for events and triggers the auto MT procedure
