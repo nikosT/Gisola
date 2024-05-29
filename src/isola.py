@@ -766,10 +766,10 @@ def gatherResults(cfg=None, evt=None, workdir=None, bestinvdir=None, revise=Fals
             evt.origins=list(filter(lambda x: not x.resource_id==_fm[0].moment_tensor.derived_origin_id,evt.origins))
             evt.magnitudes=list(filter(lambda x: not x.origin_id==_fm[0].moment_tensor.derived_origin_id,evt.magnitudes))
 
-    # this double for loop is needed in order to maintain the components attribdict
-    for _ in evt.focal_mechanisms:
-        for _i in range(1,len(_.extra.components.value)+1):
-            _.extra['components']['value']['component_'+str(_i)]['value']=AttribDict()
+            # this double for loop is needed in order to maintain the components attribdict
+            for _ in evt.focal_mechanisms:
+                for _i in range(1,len(_.extra.components.value)+1):
+                    _.extra['components']['value']['component_'+str(_i)]['value']=AttribDict()
 
     evt.focal_mechanisms.append(fm)
     evt.origins.append(org)
