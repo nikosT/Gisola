@@ -164,7 +164,10 @@ def getOrigin(cfg, evt, historical):
 
 def getMagnitude(evt, org):
     # retrieve associated magnitude
-    return [m for m in evt.magnitudes if m.origin_id==org.resource_id][0]
+    try:
+        return [m for m in evt.magnitudes if m.origin_id==org.resource_id][0]
+    except:
+        return evt.preferred_magnitude()
 
 def getFocalMechanism(evt):
     # retrieve "best" focal info (if any), else last found
