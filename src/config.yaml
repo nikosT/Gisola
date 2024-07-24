@@ -153,7 +153,9 @@ Stream:
   # it takes more time than the other services. The more service you add 
   # the more time is required before it process to the next phase.
   # If you need to use restricted data from the FDSNWS-dataselect, you
-  # should provide the token value, otherwise, use null.
+  # should provide the token value, otherwise, use null. The token value
+  # should be a file without "." in its filename and inside it, it must
+  # have the PGP message.
   Service:
     - [FDSNWS, http://eida.gein.noa.gr, null]
     - [FDSNWS, http://www.orfeus-eu.org, null]
