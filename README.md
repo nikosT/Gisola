@@ -3,6 +3,7 @@
 </a>
 <br/><br/>
 
+# Wiki
 Visit the <a href="https://github.com/nikosT/Gisola/wiki">Wiki</a> for more information on:
 * Methodology
 * Installation
@@ -11,18 +12,28 @@ Visit the <a href="https://github.com/nikosT/Gisola/wiki">Wiki</a> for more info
 * Plugins/Modules and Tools
 * Contribution
 
-Citation
+# Citation
 Nikolaos Triantafyllis, Ioannis E. Venetis, Ioannis Fountoulakis, Erion‐Vasilis Pikoulis, Efthimios Sokos, Christos P. Evangelidis; Gisola: A High‐Performance Computing Application for Real‐Time Moment Tensor Inversion. Seismological Research Letters 2021; doi: https://doi.org/10.1785/0220210153
 
-Gisola presentation received the Virtual Outstanding Student and PhD candidate Presentation (vOSPP) Award 2021! #egu2021
+Gisola presentation received the Virtual Outstanding Student and PhD candidate Presentation (vOSPP) Award 2021 #egu2021
 https://www.egu.eu/awards-medals/ospp-award/2021/
 
-Gisola presented in EGU General Assembly 2021 and FOSSCOMM 2021<br>
-Watch presentation here: https://www.youtube.com/watch?v=wqoSDMYNqMY (in Greek)
+# Presentations
 
+## EGU General Assembly 2021
+Abstract: https://meetingorganizer.copernicus.org/EGU21/EGU21-15888.html<br>
+Presentation: https://github.com/nikosT/Gisola/blob/main/material/EGU21-15888-print.pdf
 
-Use Cases
+## FOSSCOMM 2021
+video: https://www.youtube.com/watch?v=wqoSDMYNqMY (in Greek)<br>
+slides: https://github.com/nikosT/Gisola/blob/main/material/Gisola-FOSSCOMM.pdf
 
+## Online Workshop on Moment Tensor Inversion using Gisola for the Bandung Institute of Technology (Indonesia)
+video Part 1: https://youtu.be/J7gBTWYrXXQ?si=iNaHa2Rj4sQMmIoa (ISOLA)<br>
+video Part 2: https://youtu.be/sEBDyyXLatM?si=tyvuyts-u1iCUB7m (Gisola)<br>
+slides: https://github.com/nikosT/Gisola/blob/main/material/Gisola-Institut%20Teknologi%20Bandung-2024.pptx-1.pdf
+
+# Use Cases
 * <img src="http://eida.gein.noa.gr/logos/hl.png" width="4%"/> National Observatory of Athens, Institute of Geodynamics - https://bbnet.gein.noa.gr/gisola/realtime
 <a href="https://bbnet.gein.noa.gr/gisola/realtime">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/screenshot.png" width="60%"/>
