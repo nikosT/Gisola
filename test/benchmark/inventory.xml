@@ -17361,7 +17361,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -17678,7 +17678,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -17995,7 +17995,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -24882,7 +24882,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -25199,7 +25199,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -25516,7 +25516,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -25793,7 +25793,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -26070,7 +26070,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -26347,7 +26347,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -36220,7 +36220,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -36538,7 +36538,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -36856,7 +36856,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -38945,7 +38945,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -39222,7 +39222,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -39499,7 +39499,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -39776,7 +39776,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -40053,7 +40053,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -40330,7 +40330,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -48109,7 +48109,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -48427,7 +48427,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -48745,7 +48745,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -49022,7 +49022,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -49299,7 +49299,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -49576,7 +49576,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -51689,7 +51689,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -51987,7 +51987,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
@@ -52285,7 +52285,7 @@
                 <Name>COUNTS</Name>
               </OutputUnits>
               <Symmetry>ODD</Symmetry>
-              <NumeratorCoefficient>8192.0</NumeratorCoefficient>
+              <NumeratorCoefficient>1024.0</NumeratorCoefficient>
               <NumeratorCoefficient>98304.0</NumeratorCoefficient>
               <NumeratorCoefficient>540672.0</NumeratorCoefficient>
               <NumeratorCoefficient>1802240.0</NumeratorCoefficient>
