@@ -209,7 +209,7 @@
 93 close(110)
 
       KEYINV=2 !fixed to deviatoric type
-      DT=TL/8192.
+      DT=TL/REAL(NUM_OF_TIME_SAMPLES)
       ISOURMAX=NS
       ISUBMAX=1
       VARDAT=2.0e-12
