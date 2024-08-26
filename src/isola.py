@@ -37,6 +37,8 @@ from obspy.core import AttribDict
 # local
 import config, event, modules.kagan
 
+NUM_OF_TIME_SAMPLES = 1024
+
 def kaganCalc(x):
     return modules.kagan.get_kagan_angle(*x[0:3], *x[3:6])
 
@@ -102,7 +104,7 @@ def calculateVariance(observed, synthetic, tl):
     """
     with np.errstate(divide='raise'):
         try:
-            dt = round((tl/8192.0),4)
+            dt = round((tl/float(NUM_OF_TIME_SAMPLES)),4)
             obs = np.array(observed)
             syn = np.array(synthetic)
 
@@ -340,11 +342,11 @@ def createRaw():
         os.makedirs(os.path.join(config.rawdir,str(i)))
 
         _st=config.st.copy()
-        # downsampling at known frequency at 8192 elements
-        _st.resample(8192/tl)
+        # downsampling at known frequency at NUM_OF_TIME_SAMPLES elements
+        _st.resample(NUM_OF_TIME_SAMPLES/tl)
         # be sure than no point exceeds number
         for tr in _st:
-            tr.data=tr.data[:8192]
+            tr.data=tr.data[:NUM_OF_TIME_SAMPLES]
 
         for stat in stations:
             _st2=_st.select(station=stat.split()[4])
@@ -359,7 +361,7 @@ def createRaw():
                           )
 
             else: # dummy data
-                for _ in range(8192):
+                for _ in range(NUM_OF_TIME_SAMPLES):
                     text+='{:.6e}\t{:.6e}\t{:.6e}\t{:.6e}\n'.format(0, 0, 0, 0)
 
             with open(os.path.join(config.rawdir,str(i),stat.split()[4].upper()+'raw.dat'), 'w') as _:
@@ -564,7 +566,7 @@ def gatherResults(cfg=None, evt=None, workdir=None, bestinvdir=None, revise=Fals
     org=Origin()
     mag=Magnitude()
 
-    org.time=event.getOrigin(config.cfg,evt,config.cfg['Watcher']['Historical']).time+float(best[4])*(tl/8192)
+    org.time=event.getOrigin(config.cfg,evt,config.cfg['Watcher']['Historical']).time+float(best[4])*(tl/NUM_OF_TIME_SAMPLES)
     _lat, _lon=cart2earth(event.getOrigin(config.cfg,evt,config.cfg['Watcher']['Historical']).latitude,
                           event.getOrigin(config.cfg,evt,config.cfg['Watcher']['Historical']).longitude, best[1], best[2])
     org.latitude=_lat

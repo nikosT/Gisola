@@ -44,6 +44,8 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from obspy.core.event import read_events
 import multiprocessing
 
+NUM_OF_TIME_SAMPLES = 1024
+
 def emsc(filepath='emsc.txt'):
 
     filepath=os.path.join(config.outputdir, ('emsc.txt' if not config.revise else 'emsc.revise.txt'))
@@ -564,7 +566,7 @@ def top(solutionspath=None, tl=None, filepath='top.png'):
         '.hed'),'r') as f:
             tl=float(f.readlines()[2].split('=')[1])
 
-    dt=tl/8192
+    dt=tl/NUM_OF_TIME_SAMPLES
     if solutionspath:
         with open(solutionspath, 'r') as f:
             solutions=f.readlines()
@@ -692,7 +694,7 @@ def northeast(solutionspath=None, tl=None, filepath='northeast.png'):
         '.hed'),'r') as f:
             tl=float(f.readlines()[2].split('=')[1])
 
-    dt=tl/8192
+    dt=tl/NUM_OF_TIME_SAMPLES
 
     if solutionspath:
         with open(solutionspath, 'r') as f:
