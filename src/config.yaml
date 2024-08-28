@@ -297,13 +297,13 @@ Inversion:
   # to be performed. Multiple rules can be defined simultaneously. 
   # The best-correlated solution will be chosen, however, 
   # more time will be needed for finalizing the MT computation. 
-  # For example, if 4.0<= Mag <=4.5, Gisola will use 30.72 sec as
+  # For example, if 4.0<= Mag <=4.5, Gisola will use 204.8 sec as
   # inversion time window. Values, that can be used must be able
   # to be divided with 1024 and lead to not repeating decimals.
   Window:
-    - [4.0, 4.5, 30.72]
-    - [4.6, 5.5, 40.96]
-    - [5.6, 9.0, 51.2]
+    - [4.0, 4.5, 204.8]
+    - [4.6, 5.5, 307.2]
+    - [5.6, 9.0, 409.6]
 
   # Here is defined the time search dimension in the MT search grid.
   # Multiple rules can be defined simultaneously. The best-correlated 
@@ -315,9 +315,9 @@ Inversion:
   # relative to initial origin's time. 
   # To determine the exact time in sec you have to associate it with the 
   # corresponding values from Window parameter. For example, 
-  # if 4.0<= Mag <=4.5, Gisola will use 30.72 sec as inversion time window, 
-  # leading to a time kvantum of 30.72/1024=0.03 sec. Thus, -67*0.03=-2.01 sec
-  # to 5.01 sec with a step of 0.3 sec. A total of 24 time points for each 3D grid point.
+  # if 4.0<= Mag <=4.5, Gisola will use 204.8 sec as inversion time window, 
+  # leading to a time kvantum of 204.8/1024=0.2 sec. Thus, -67*0.2=-13.4 sec
+  # to 33.4 sec with a step of 2 sec. A total of 24 time points for each 3D grid point.
   # In our case would lead to 24*1271 grid points= 30504 MT inversions.
   # Time Shifts must also comply with the parameters defined in the 
   # parameters.f90 file within the inversion code.
