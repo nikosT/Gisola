@@ -679,7 +679,7 @@ def northeast(solutionspath=None, tl=None, filepath='northeast.png'):
     """
     @ticker.FuncFormatter
     def major_formatter(x, pos):
-        return str(-x) if x < 0 else str(x)
+        return '{:.1f}'.format(abs(x))
 
     solutionspath=os.path.join(config.outputdir,('solutions' if not config.revise else 'solutions.revise'))
     tl=config.besttl
@@ -824,7 +824,7 @@ def time(correlationspath=None, filepath='time.png'):
     """
     @ticker.FuncFormatter
     def major_formatter(x, pos):
-        return str(-x) if x < 0 else str(x)
+        return '{:.1f}'.format(abs(x))
     
     correlationspath=os.path.join(config.outputdir,('correlations' if not config.revise else 'correlations.revise'))
     tl=config.besttl
