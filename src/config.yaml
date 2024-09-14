@@ -301,9 +301,12 @@ Inversion:
   # inversion time window. Values, that can be used must be able
   # to be divided with 1024 and lead to not repeating decimals.
   Window:
-    - [4.0, 4.5, 204.8]
-    - [4.6, 5.5, 307.2]
-    - [5.6, 9.0, 409.6]
+    - [3.0, 3.4, 102.4]
+    - [3.5, 3.8, 102.4]    
+    - [3.8, 4.5, 307.2]
+    - [4.6, 5.5, 409.6]
+    - [5.6, 7.1, 409.6]
+    - [7.2, 9.0, 1024]
 
   # Here is defined the time search dimension in the MT search grid.
   # Multiple rules can be defined simultaneously. The best-correlated 
@@ -322,9 +325,9 @@ Inversion:
   # Time Shifts must also comply with the parameters defined in the 
   # parameters.f90 file within the inversion code.
   TimeShift:
-    - [4.0, 4.5, [-67, 10, 167]] # must be the same as the one in parameters.f90
-    - [4.6, 5.5, [-51, 10, 161]]
-    - [5.6, 9.0, [-81, 15, 341]]
+    - [3.0, 4.5, [-10, 1, 20]] # must be the same with the one in parameters.f90
+    - [4.6, 5.5, [-5, 1, 16]]
+    - [5.6, 9.0, [-5, 2, 43]]
 
   # Here is defined the frequency band that will be used for the inversion.
   # In form of F1 F2 F3 F4, where F1-F2 and F3-F4 are tapered.
