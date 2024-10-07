@@ -2,7 +2,7 @@
 Version: 1.0
 
 # Directory where the process is being performed
-WorkDir: ../test/results
+WorkDir: ../fanis/results
 
 # The Inventory Service supports FDSNWS-station only and file in XML format (as mentioned in ObsPy documentation)
 Inventory:
@@ -28,7 +28,7 @@ Inventory:
   Distance:
     - [6.1, 9.0, [100, 700, ['BH','HH']]] 
 
-  Azimuth: [3,2] # sectors, stations per sector # null for all!
+  Azimuth: [2,2] # sectors, stations per sector # null for all!
 
 # The Stream Service supports FDSNWS-station only and file in XML format (as mentioned in ObsPy documentation)
 Stream:
@@ -64,10 +64,10 @@ Green:
 Inversion:
   # InversionWindow = 409.6,
   # dt = 409.6/1024 = 0.4 sec
-  # TimeShift: -5*0.4 = -2 ---- 50*0.4 = +17.2sec
+  # TimeShift: -10*0.4 = -4 ---- 43*0.4 = +17.2sec
   # Step: 0.4 * 2 = 0.8
   TimeShift:
-    - [5.6, 9.0, [-5, 2, 43]]
+    - [5.6, 9.0, [-10, 2, 43]]
 
   Window:
     - [5.6, 9.0, 409.6]
