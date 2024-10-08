@@ -20,6 +20,8 @@
       INTEGER I, IA, IBEGIN, IBEST, ICOM, ID1, ID2, IERR, IM, IOPTSHF, IR, IR1, IR2
       INTEGER IRECALL, IS1, IS2, ISELECT, ISEQ, ISEQM, ISEQUEN, ISH, ISOUR, ISOURMAX, ISUB, ITIM, JM
       INTEGER KEYGPS, KEYINV, N, NFILE, NROT, NUMF1, NUMF2, NUSE
+      INTEGER NUM_ARGS
+      CHARACTER(LEN=100) :: arg
 
 !     POZOR - pokud se zmeni pocet bodu pri vypocet VR tak zmenit take manidata15.inc
 !     !!!!!!!!!!!!!!!!!!!!
@@ -125,6 +127,18 @@
 
       NTIM = NUM_OF_TIME_SAMPLES
 
+      ! Read custom KEYINV if it's passed as a 9th argument
+      KEYINV = 2 ! default to DEVIATORIC
+      NUM_ARGS = COMMAND_ARGUMENT_COUNT()
+      IF (NUM_ARGS > 8) THEN ! 8 arguments are used by the default isola.py call
+         CALL GET_COMMAND_ARGUMENT(9, arg) ! the 9th argument is KEYINV
+         READ(arg, *) KEYINV
+         IF (KEYINV /= 1 .AND. KEYINV /= 2) THEN
+            WRITE(*, *) "Warning: Invalid KEYINV value, expected 1 or 2. Using default value 2."
+            KEYINV = 2
+         END IF
+      END IF
+
       allstatfile="allstat.dat"
       inpinvfile="inpinv.dat"
       grdatfile="grdat.hed"
@@ -208,7 +222,6 @@
       end do
 93 close(110)
 
-      KEYINV=2 !fixed to deviatoric type
       DT=TL/8192.
       ISOURMAX=NS
       ISUBMAX=1
