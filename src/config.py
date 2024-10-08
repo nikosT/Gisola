@@ -188,11 +188,11 @@ def get_keyinv(config):
         keyinv = config['Inversion']['Keyinv']
     # Allow undefined keyinv in config for backwards compatability.
     except KeyError:
-        logger.info(f"'keyinv' not found in config.")
+        logger.info(f"'Keyinv' not found in config.")
         logger.info(f"Using default: 2 (deviatoric)")
     
     if keyinv not in [1, 2]:
-        logger.info(f"Invalid keyinv value '{keyinv}', expected int: 1 (iso) or 2 (dev).")
+        logger.info(f"Invalid 'Keyinv' value '{keyinv}', expected int: 1 (iso) or 2 (dev).")
         logger.info(f"Using default: 2 (deviatoric)")
         keyinv = 2
     return keyinv
