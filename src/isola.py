@@ -384,7 +384,7 @@ def calculateInversions():
 
                 os.makedirs(os.path.join(config.inversiondir,invdir))
 
-                command='{} {} {} {} {} {} {} {} {}\n'.format(os.path.join(os.getcwd(),config.cfg['Inversion']['ExePath']),
+                command='{} {} {} {} {} {} {} {} {} {} \n'.format(os.path.join(os.getcwd(),config.cfg['Inversion']['ExePath']),
                             os.path.join('..', '..','allstat', allstat),
                             os.path.join('..', '..','inpinv', inpinv),
                             os.path.join('..', '..','grdat', 'grdat'+igrdat+'.hed'),
@@ -392,8 +392,9 @@ def calculateInversions():
                             os.path.join('..', '..','crustals', 'crustal'+icrustal+'.dat'),
                             os.path.join('..', '..','sources', 'grid'+igrid, 'source'+isource+'.dat'),
                             os.path.join('..', '..','station.dat'),
-                            os.path.join('..', '..','raw', igrdat))
-                #print(command)
+                            os.path.join('..', '..','raw', igrdat),
+                            str(config.get_keyinv(config.cfg))
+                            )
 
                 proc=subprocess.Popen(command, cwd=os.path.join(config.inversiondir, invdir), shell=True, universal_newlines=True,stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                 out,err=proc.communicate()
@@ -413,16 +414,17 @@ def calculateRevisedInversions(_cfg,logger,workdir,bestinvdir, restore=False):
     for grhes in sorted(glob.glob(os.path.join(workdir,'greens',grhes))):
         isource= grhes.split('.')[-2]
 
-        command='{} {} {} {} {} {} {} {} {}\n'.format(os.path.join(os.getcwd(),_cfg['Inversion']['ExePath']),
-                os.path.join('..', '..','allstat', allstat),
+        command='{} {} {} {} {} {} {} {} {} {} \n'.format(os.path.join(os.getcwd(),_cfg['Inversion']['ExePath']),
+                os.path.join('..', '..','allstat', allstat),    
                 os.path.join('..', '..','inpinv', inpinv),
                 os.path.join('..', '..','grdat', 'grdat'+igrdat+'.hed'),
                 os.path.join('..', '..','greens', os.path.basename(grhes)),
                 os.path.join('..', '..','crustals', 'crustal'+icrustal+'.dat'),
                 os.path.join('..', '..','sources', 'grid'+igrid, 'source'+isource+'.dat'),
                 os.path.join('..', '..','station.dat'),
-                os.path.join('..', '..','raw', igrdat))
-        #print(command)
+                os.path.join('..', '..','raw', igrdat),
+                str(config.get_keyinv(_cfg)))
+
         invdir='{}.{}.{}.{}.{}.{}'.format(allstat.split('.')[0][7:], 
                inpinv.split('.')[0][6:], icrustal, igrdat, igrid, isource)
 
