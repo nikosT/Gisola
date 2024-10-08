@@ -2,7 +2,7 @@
 Version: 1.0
 
 # Directory where the process is being performed
-WorkDir: ../fanis/results
+WorkDir: ../test/results
 
 # The Inventory Service supports FDSNWS-station only and file in XML format (as mentioned in ObsPy documentation)
 Inventory:
