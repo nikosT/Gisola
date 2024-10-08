@@ -2,7 +2,7 @@
 Version: 1.0
 
 # Directory where the process is being performed
-WorkDir: ../test/results
+WorkDir: ../fanis/dev-iso-tests
 
 # The Inventory Service supports FDSNWS-station only and file in XML format (as mentioned in ObsPy documentation)
 Inventory:
@@ -73,6 +73,9 @@ Inversion:
     - [6.1, 9.0, [0.007, 0.008, 0.02, 0.03]]
 
   ExePath: core/inversion/isola
+  
+  # ISOTROPIC = 1, DEVIATORIC = 2
+  Keyinv: 2
 
 # This service provides gisola with event info
 Event:

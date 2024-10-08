@@ -341,6 +341,9 @@ Inversion:
   # Path to inversion executable. Unless you know what 
   # you are doing, you won't need to change it.
   ExePath: core/inversion/isola
+  
+  # ISOTROPIC = 1, DEVIATORIC = 2, 
+  Keyinv: 2 
 
 # This service is used to provide Gisola with a catalog of 
 # seismic events, either for real-time or past-time operation.  
