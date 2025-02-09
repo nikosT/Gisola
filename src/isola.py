@@ -600,6 +600,7 @@ def gatherResults(cfg=None, evt=None, workdir=None, bestinvdir=None, revise=Fals
             elif line.startswith(' moment (Nm)'):
                 mag.mag=float(content[i+1].split()[2])
                 mt.scalar_moment=float(line.split()[2])
+                mt.iso = float(content[i+2].split()[3])/100.0
                 mt.double_couple=float(content[i+3].split()[3])/100.0
                 mt.clvd=float(content[i+4].split()[3])/100.0
                 nd=content[i+5].split() + content[i+6].split()
