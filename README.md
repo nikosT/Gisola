@@ -40,26 +40,33 @@ slides: https://github.com/nikosT/Gisola/blob/main/material/Gisola-Institut%20Te
 </a>
 <br/><br/>
 
-* <img src="http://aptsunami.fmipa.unesa.ac.id/2022/logo.png" width="4%"/> FMIPA Unesa - Universitas Negeri Surabaya - http://aptsunami.fmipa.unesa.ac.id
-<a href="http://aptsunami.fmipa.unesa.ac.id">
-<img src="https://github.com/nikosT/Gisola/blob/main/material/fmipa.png" width="60%"/>
-</a>
-<br/><br/>
-
-* <img src="https://www.sgc.gov.co/static/media/Logo_SGC.8391f3a4.svg" width="4%"/> Colombian Geological Survey (Servicio Geológico Colombiano) - https://www.sgc.gov.co
-<a href="https://www.sgc.gov.co/">
-<img src="https://github.com/nikosT/Gisola/blob/main/material/sgc.png" width="60%"/>
-</a>
-<br/><br/>
-
 * <img src="https://www.geo.edu.al//gisola/2023/logo.png" width="4%"/> Institute of Geosciences (IGEO) - https://www.geo.edu.al/
 <a href="https://www.geo.edu.al/MonitoringForecast/Moment_Tensor_Solutions/">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/igeo.png" width="60%"/>
 </a>
 <br/><br/>
 
+
+* <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Logo_BMKG_%282010%29.png/140px-Logo_BMKG_%282010%29.png" width="4%"/> BMKG - Badan Meteorologi, Klimatologi, dan Geofisika - https://www.bmkg.go.id/
+<a href="https://lampung.bmkg.go.id/info/gempa-momenttensor/98-km-BaratDaya-TANGGAMUS-LAMPUNG/bmg2025rxzh">
+<img src="https://github.com/nikosT/Gisola/blob/main/material/bmkg.png" width="60%"/>
+</a>
+<br/><br/>
+
+* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5whekkjnJt8HIgpk3bsrCclC8D4Eo5gg1NQ&s" width="4%"/> FMIPA Unesa - Universitas Negeri Surabaya - http://aptsunami.fmipa.unesa.ac.id
+<a href="http://aptsunami.fmipa.unesa.ac.id">
+<img src="https://github.com/nikosT/Gisola/blob/main/material/fmipa.png" width="60%"/>
+</a>
+<br/><br/>
+
+* <img src="https://www.sgc.gov.co/static/media/Logo_SGC.8d2ba7de8cd155aa5f3b25f8478fb58a.svg" width="4%"/> Colombian Geological Survey (Servicio Geológico Colombiano) - https://www.sgc.gov.co
+<a href="https://www.sgc.gov.co/">
+<img src="https://github.com/nikosT/Gisola/blob/main/material/sgc.png" width="60%"/>
+</a>
+<br/><br/>
+
 * <img src="https://www.uprm.edu/portada/wp-content/uploads/sites/24/2018/06/logo-upr-rum-white-150x150.png" width="4%"/> Recinto Universitario de Mayagüez (Puerto Rico Strong Motion Program) [Experimental] - https://smp.uprm.edu
-<a href="https://smp.uprm.edu/mtmon/2022">
+<a href="https://smp.uprm.edu/mtmon/2022/">
 <img src="https://github.com/nikosT/Gisola/blob/main/material/uprm.png" width="60%"/>
 </a>
 <br/><br/>
