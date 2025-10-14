@@ -40,61 +40,34 @@ import config, event, modules.kagan
 def kaganCalc(x):
     return modules.kagan.get_kagan_angle(*x[0:3], *x[3:6])
 
-def cart2earth(lat,lon,x,y):
+def cart2earth(lat, lon, x, y):
     """
-    BSD 3-Clause License
-    Copyright (c) 2017, Juno Inc.
-    All rights reserved.
-    https://github.com/gojuno/geo-py/blob/master/geo/sphere.py
-    Calculate lat and lon from origin lat lon and cart position
+    Calculate destination latitude and longitude given a local Cartesian displacement (x east, y north) in km.
     """
     def destination(point, distance, bearing):
-        '''
-            Given a start point, initial bearing, and distance, this will
-            calculate the destina?tion point and final bearing travelling
-            along a (shortest distance) great circle arc.
-
-            (see http://www.movable-type.co.uk/scripts/latlong.htm)
-        '''
         EARTH_MEAN_RADIUS = 6371008.8
-
         lon1, lat1 = (math.radians(coord) for coord in point)
         radians_bearing = math.radians(bearing)
-
         delta = distance / EARTH_MEAN_RADIUS
-
         lat2 = math.asin(
             math.sin(lat1)*math.cos(delta) +
             math.cos(lat1)*math.sin(delta)*math.cos(radians_bearing)
         )
-        numerator = math.sin(radians_bearing) * math.sin(delta) * math.cos(lat1)
-        denominator = math.cos(delta) - math.sin(lat1) * math.sin(lat2)
-
-        lon2 = lon1 + math.atan2(numerator, denominator)
-
+        lon2 = lon1 + math.atan2(
+            math.sin(radians_bearing)*math.sin(delta)*math.cos(lat1),
+            math.cos(delta) - math.sin(lat1)*math.sin(lat2)
+        )
         lon2_deg = (math.degrees(lon2) + 540) % 360 - 180
         lat2_deg = math.degrees(lat2)
-
         return (lon2_deg, lat2_deg)
 
-    dist=math.sqrt(x**2+y**2)*1000
-    try:
-        if x==0 and y==0:
-            azm=0
-        elif y>=0 and x>=0:
-            azm=math.atan(x/y)
-        elif y<0 and x>=0:
-            azm=180-math.atan(x/abs(y))
-        elif y<=0 and x<=0:
-            azm=180+math.atan(abs(x)/abs(y))
-        elif y>0 and x<0:
-            azm=270+math.atan(abs(y)/abs(x))
-    except ZeroDivisionError:
-        azm=90 if x>0 else -90
+    dist = math.sqrt(x**2 + y**2) * 1000  # meters
+    azm = math.degrees(math.atan2(x, y))
+    if azm < 0:
+        azm += 360
 
-    lon2,lat2=destination((lon,lat), dist, azm)
+    lon2, lat2 = destination((lon, lat), dist, azm)
     return round(lat2, 4), round(lon2, 4)
-
 
 def calculateVariance(observed, synthetic, tl):
     """
