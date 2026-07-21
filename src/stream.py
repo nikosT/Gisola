@@ -49,6 +49,16 @@ def getWaveforms(save=True):
 
     endtime=config.org.time+math.ceil(maxtl)+1
 
+    # If the inversion window is too short for MouseTrap, extend waveform
+    # retrieval to provide the complete MouseTrap analysis interval.
+    # NOTE: origin + 175 assumes the current MouseTrap defaults:
+    # t_max=120 s, fit_time_after=60 s, MouseTrap input starting at
+    # origin-10 s, and a 5 s safety margin. Update this value if these
+    # defaults change. The stream is later trimmed back to the configured
+    # inversion window.
+    if 'mouse' in config.cfg['Stream']['Modules']:
+        endtime = max(endtime, config.org.time + 175)
+    
     # wait if endtime has not come yet
     if UTCDateTime.now() <= endtime:
         time.sleep(endtime-UTCDateTime.now()+1)
