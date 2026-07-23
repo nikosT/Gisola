@@ -23,7 +23,7 @@ from obspy.clients.filesystem.sds import Client as SDS
 from obspy.clients.seedlink.basic_client import Client as SeedLink
 from obspy import UTCDateTime, Stream, Trace
 import multiprocessing, os.path, time, logging, operator
-import warnings, math
+import warnings, math, inspect
 
 # import local configuration to cfg variable
 import config
@@ -49,15 +49,23 @@ def getWaveforms(save=True):
 
     endtime=config.org.time+math.ceil(maxtl)+1
 
-    # If the inversion window is too short for MouseTrap, extend waveform
-    # retrieval to provide the complete MouseTrap analysis interval.
-    # NOTE: origin + 175 assumes the current MouseTrap defaults:
-    # t_max=120 s, fit_time_after=60 s, MouseTrap input starting at
-    # origin-10 s, and a 5 s safety margin. Update this value if these
-    # defaults change. The stream is later trimmed back to the configured
-    # inversion window.
     if 'mouse' in config.cfg['Stream']['Modules']:
-        endtime = max(endtime, config.org.time + 175)
+         # 1. Get t_max and t_start_origin from the check() function signature
+         check_sig = inspect.signature(mouse.check)
+         t_max = check_sig.parameters['t_max'].default
+         t_start_origin = check_sig.parameters['t_start_origin'].default
+
+          # 2. Get fit_time_after from the mouse class __init__ signature
+         mouse_sig = inspect.signature(mouse.mouse.__init__)
+         fit_time_after = mouse_sig.parameters['fit_time_after'].default
+
+         # 3. Define the safety margin
+         safety_margin = 5
+
+         # Calculate the dynamic padding
+         mouse_padding = t_max + fit_time_after - t_start_origin + safety_margin
+
+         endtime = max(endtime, config.org.time + mouse_padding)
     
     # wait if endtime has not come yet
     if UTCDateTime.now() <= endtime:
