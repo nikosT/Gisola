@@ -237,8 +237,7 @@ def correct(stream):
             st=st.trim(starttime=config.org.time-10)
 
         # rotate will always bring components to ZNE name
-        st.rotate(method="->ZNE", inventory=inv, \
-        components=tuple(config.cfg['Inventory']['Components']))
+        st.rotate(method="->ZNE", inventory=inv)
 
         if 'snr' in config.cfg['Stream']['Modules']:
             # filter traces by SNR
@@ -290,7 +289,7 @@ def correct(stream):
         # flat signal
         st.detrend('linear')
         # remove_response
-        st.remove_response(inventory=inv, 
+        st.remove_response(inventory=None, 
                        output='VEL', # output units in Velocity (m/s)
                        pre_filt=(0.001, 0.002, 8, 9), # bandpass frqs (Hz)
                        zero_mean=True, # detrend(demean)
@@ -363,4 +362,5 @@ def prioritize():
     '{}').format(os.path.join(config.workdir,'streams_corrected.mseed')))
     config.st.write(os.path.join(config.workdir,'streams_corrected.mseed'), \
     format='MSEED')
+
 
